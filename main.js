@@ -1,6 +1,8 @@
+function getWord() {
 var word = require('./game');
+}
 
-console.log(word.gameWord);
+// console.log(word.gameWord);
 
 var guessedLetter = process.argv[2];
 
@@ -27,13 +29,13 @@ for (var i = 0; i < wordArray.length; i++) {
 	}	
 }
 
-console.log(wordArray);
+// console.log(wordArray);
 
-console.log(blank);
+// console.log(blank);
 
-console.log(wordArray.toString());
+// console.log(wordArray.toString());
 
-console.log(blank.join());
+// console.log(blank.join());
 
 function arraysEqual(arr1, arr2) {
 // .split("")
@@ -97,6 +99,8 @@ function include(array, guessedLetter) {
 			}
 		}
 }
+
+getWord();
 
 if (continueGame) {
 
