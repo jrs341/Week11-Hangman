@@ -2,7 +2,7 @@ var randomWord = require('random-word-by-length');
 
 // var word = require("word-definition");
 
-var gameWord = randomWord();
+// var gameWord = randomWord();
 
 // var wordDef = word.getDef(gameWord, "en", null, function(definition) {
     // console.log(definition);
@@ -12,4 +12,4 @@ var gameWord = randomWord();
 // console.log(randomWord());
 // console.log(gameWord.split(''));
 
-module.exports.gameWord = randomWord();
+module.exports = randomWord();

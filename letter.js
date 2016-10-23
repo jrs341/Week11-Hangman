@@ -1,2 +1,3 @@
-var letter = require('./word');
-console.log(gameWord);
+var letter = require('./main1');
+
+console.log(letter.guessedLetter);
