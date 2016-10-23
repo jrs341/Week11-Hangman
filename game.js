@@ -1,5 +1,6 @@
 var randomWord = require('random-word-by-length');
 
+
 // var word = require("word-definition");
 
 // var gameWord = randomWord();
@@ -9,7 +10,7 @@ var randomWord = require('random-word-by-length');
 //     console.log(definition.word);
 // });
 
-// console.log(randomWord());
+// console.log(randomWord);
 // console.log(gameWord.split(''));
 
 module.exports = randomWord();

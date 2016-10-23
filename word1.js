@@ -2,8 +2,8 @@ var randomWord = require('./game.js');
 
 var userGuess = process.argv[2];
 
-console.log(randomWord);
-console.log(userGuess);
+// console.log(randomWord);
+// console.log(userGuess);
 
 
 
@@ -32,7 +32,7 @@ function CheckUserGuess(randomWord, userGuess) {
 
 var checkGuess = new CheckUserGuess(randomWord, userGuess);
 // console.log(checkGuess.goodGuess);
-checkGuess.checkWord();
+// checkGuess.checkWord();
 // var logic = checkGuess.goodGuess;
 // console.log(logic);
 module.exports = checkGuess;
