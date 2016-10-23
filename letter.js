@@ -1,7 +1,7 @@
 var checkGuess = require('./word1');
 // var logic = require('./word1');
 // checkGuess.checkWord();
-console.log(checkGuess);
+console.log(checkGuess.word);
 // console.log(checkGuess.goodGuess);
 // console.log(logic);
 // console.log(randomWord);
@@ -17,7 +17,7 @@ function Display(randomWord, userGuess, logic) {
 	this.log = function() {
 		// console.log(this.randomWord);
 		// console.log(userGuess);
-		console.log(this.randomWord.length);
+		// console.log(this.randomWord.length);
 		// console.log(this.guessedLetters);
 	}
 	this.Push = function() {
@@ -38,9 +38,9 @@ function Display(randomWord, userGuess, logic) {
 			
 				if (this.randomWord[i] === userGuess) { 
 					this.blank.splice(i, 1, userGuess);
-					console.log(this.blank);
 				}
 			}
+		console.log(this.blank.join(' '));
 		}
 	}
 }
@@ -50,7 +50,7 @@ checkGuess.checkWord();
 var displayThis = new Display(checkGuess.word, checkGuess.guess, checkGuess.goodGuess);
 
 
-console.log(checkGuess.goodGuess);
+// console.log(checkGuess.goodGuess);
 displayThis.Push();
 displayThis.arrayUpdate();
 displayThis.log();
