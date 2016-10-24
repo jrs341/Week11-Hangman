@@ -1,20 +1,13 @@
-var randomWord = require('./game.js');
-
-var userGuess = process.argv[2];
-
-// console.log(randomWord);
-// console.log(userGuess);
-
-
 
 function CheckUserGuess(randomWord, userGuess) {
 	this.word = randomWord,
 	this.guess = userGuess,
-	// this.guessedLetters = [];
+	this.guessedLetters = [];
 	this.goodGuess = false;
-	// this.Push = function() {
-	// 	this.guessedLetters.push(userGuess);	
-	// }
+	this.Push = function() {
+		this.guessedLetters.push(userGuess);
+		console.log(this.guessedLetters);	
+	}
 	// this.log = function() {
 	// 	console.log(this.guessedLetters);
 	// }
@@ -30,13 +23,6 @@ function CheckUserGuess(randomWord, userGuess) {
 	}
 }
 
-var checkGuess = new CheckUserGuess(randomWord, userGuess);
-// console.log(checkGuess.goodGuess);
-// checkGuess.checkWord();
-// var logic = checkGuess.goodGuess;
-// console.log(logic);
-module.exports = checkGuess;
-// module.exports = logic;
-// module.exports = randomWord;
-// module.exports = userGuess;
+module.exports = CheckUserGuess;
+
 
