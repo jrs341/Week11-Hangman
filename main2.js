@@ -3,9 +3,9 @@ var inquirer = require('inquirer');
 
 var Display = require('./letter.js');
 
-console.log(Display);
-
 var randomWord
+
+var randomWordBlankArray
 
 function gameInit () {
 	inquirer.prompt([{
@@ -22,7 +22,7 @@ function gameInit () {
 			console.log('Hangman is fun!');
 			console.log('Here is your first word');
 			console.log(randomWord);
-			var randomWordBlankArray = new Display(randomWord);
+			randomWordBlankArray = new Display(randomWord);
 			randomWordBlankArray.blankArray();
 			game();
 		}
@@ -30,12 +30,16 @@ function gameInit () {
 }
 
 function game () {
-	// console.log(randomWord);
+	// console.log(randomWordBlankArray);
 	inquirer.prompt([{
 		name: 'letter',
 		message: 'Choose a letter'
 	}]).then(function(answer) {
 		console.log(answer.letter);
+		randomWordBlankArray = new Display(randomWord, answer.letter);
+		randomWordBlankArray.blankArray();
+		randomWordBlankArray.arrayUpdate();
+		// console.log(randomWordBlankArray);
 	});
 	// game(); endless loop
 }

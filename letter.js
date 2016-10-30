@@ -16,10 +16,13 @@ function Display(randomWord, userGuess) {
 	}
 	this.arrayUpdate = function() {
 
+		this.guessedLetters.push(userGuess);
+
 		for(var i = 0; i < this.randomWord.length; i++) {
 			
 			if (this.randomWord[i] === userGuess) { 
 				this.blank.splice(i, 1, userGuess);
+				// console.log(this.blank.join(' '));
 			}	
 		}
 		console.log(this.blank.join(' '));
