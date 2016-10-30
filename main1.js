@@ -10,17 +10,38 @@ var Display = require('./letter.js');
 
 var inquirer = require('inquirer');
 
-var game = function() {
+var count = 0;
 
+var game = function() {
+	inquirer.prompt([{
+		name: 'letter',
+		message: 'Choose another letter'
+	}]).then(function(letter){
+		count ++;
+		var checkGuess = new CheckUserGuess(randomWord, letter.letter);
+		var newBlankArray = new Display(randomWord, letter.letter);
+		checkGuess.checkWord();
+			// console.log(checkGuess);
+		checkGuess.Push();
+		newBlankArray.blankArray();
+		newBlankArray.arrayUpdate();
+	})
+	if (count = 10) {
+		return;
+	} else {
+	game();
+	}
 }
 
-
+var gameInit = function() {
+	if (count = 0){
+		// count ++;
 inquirer.prompt([{
 	name: 'play',
 	message: 'Would you like to play hangman?'
-},{
-	name: 'lenght',
-	message: 'What is the max length of the words you would like to guess?'
+// },{
+// 	name: 'lenght',
+// 	message: 'What is the max length of the words you would like to guess?'
 }]).then(function(answer) {
 	if (answer.play == 'no') {
 		console.log('I wish you would play');
@@ -45,3 +66,13 @@ inquirer.prompt([{
 		})
 	}
 })
+} else if (count > 0 && count < randomWord.split().length){
+	game();
+}
+}
+
+gameInit();
+
+
+
+
