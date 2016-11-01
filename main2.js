@@ -5,7 +5,15 @@ var Display = require('./letter.js');
 
 var randomWord
 
+var letter
+
 var randomWordBlankArray
+
+// var randomWordBlankArray = new Display(randomWord, letter);
+
+console.log(randomWordBlankArray);
+
+var count = 0;
 
 function gameInit () {
 	inquirer.prompt([{
@@ -24,24 +32,68 @@ function gameInit () {
 			console.log(randomWord);
 			randomWordBlankArray = new Display(randomWord);
 			randomWordBlankArray.blankArray();
+			console.log(randomWordBlankArray.blank.join(''));
 			game();
 		}
 	});
 }
 
 function game () {
-	// console.log(randomWordBlankArray);
+	// randomWordBlankArray = new Display(randomWord, answer.letter);
+	console.log(randomWordBlankArray);
 	inquirer.prompt([{
 		name: 'letter',
 		message: 'Choose a letter'
 	}]).then(function(answer) {
+		if (count == 0) {
+			count ++;
+			randomWordBlankArray = new Display(randomWord, answer.letter);
+			randomWordBlankArray.blankArray();
+			randomWordBlankArray.arrayUpdate(randomWord, answer.letter);
+			console.log(randomWordBlankArray.blank.join(''));
+			game();
+		} else {
+			randomWordBlankArray.blankArray();
+			randomWordBlankArray.arrayUpdate();
+			console.log(randomWordBlankArray.blank.join(''));
+			if (answer.letter) {
+
+				if (count > 0 && count < randomWord.split('').length){
+					game();
+					return;
+				}
+			}
+		}
+		// console.log(answer.letter);
+		// randomWordBlankArray = new Display(randomWord, answer.letter);
+		// randomWordBlankArray.blankArray();
+		// randomWordBlankArray.arrayUpdate();
+		// console.log(randomWordBlankArray);
+		// if (answer.letter) {
+
+		// 	if (count > 0 && count < randomWord.split('').length){
+		// 		game();
+		// 		return;
+		// 	}
+		// }
+		// continueGame();
+
+	});
+}
+
+function continueGame () {
+	console.log(randomWordBlankArray);
+	inquirer.prompt([{
+		name: 'letter',
+		message: 'Choose a letter'
+	}]).then(function(answer) {
+		count ++;
 		console.log(answer.letter);
-		randomWordBlankArray = new Display(randomWord, answer.letter);
+		randomWordBlankArray(randomWord, answer.letter);
+		console.log(randomWordBlankArray);
 		randomWordBlankArray.blankArray();
 		randomWordBlankArray.arrayUpdate();
-		// console.log(randomWordBlankArray);
 	});
-	// game(); endless loop
 }
 
 gameInit();

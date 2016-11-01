@@ -2,7 +2,7 @@
 function Display(randomWord, userGuess) {
 	this.randomWord = randomWord.split(''),
 	this.guess = userGuess,
-	this.guessedLetters =[],
+	// this.guessedLetters =[],
 	this.blank = [],
 	
 	// this.Push = function() {
@@ -12,11 +12,11 @@ function Display(randomWord, userGuess) {
 		for (var i = 0; i < this.randomWord.length; i++) {
 			this.blank[i] = ' _ ';
 		}
-	console.log(this.blank.join(''));
+	// console.log(this.blank.join(''));
 	}
 	this.arrayUpdate = function() {
 
-		this.guessedLetters.push(userGuess);
+		// this.guessedLetters.push(userGuess);
 
 		for(var i = 0; i < this.randomWord.length; i++) {
 			
@@ -25,7 +25,7 @@ function Display(randomWord, userGuess) {
 				// console.log(this.blank.join(' '));
 			}	
 		}
-		console.log(this.blank.join(' '));
+		// console.log(this.blank.join(' '));
 	}	
 }
 
