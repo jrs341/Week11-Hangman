@@ -1,11 +1,9 @@
-// var randomWord = require('random-word-by-length');
+var randomWord = require('random-word-by-length');
 
-// // var word = require("word-definition");
+var gameWord = randomWord(20);
 
-// var gameWord = randomWord();
-
-// module.exports.gameWord = randomWord();
-
-exports.game = {
-	wordBank : ["heart and soul", "relax", "burning up", "manic monday", "into the groove", "invisible touch", "rebel yell"]
-};
+module.exports = gameWord;
+// module.exports = wordCat;
+// exports.game = {
+// 	wordBank : ["heart and soul", "relax", "burning up", "manic monday", "into the groove", "invisible touch", "rebel yell"]
+// };

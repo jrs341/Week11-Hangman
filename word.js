@@ -9,7 +9,6 @@ var Word = function(wrd){
 		for(var i = 0; i < this.word.length; i++) {
 			this.lets.push(new Letter(this.word[i]));
 		}
-		console.log(this.lets);
 	};
 	
 	//found the current word

@@ -1,5 +1,4 @@
-// var gameWord = require('./word');
-// console.log(gameWord);
+
 var Letter = function(let) {
 	
 	this.charac = let;
