@@ -1,16 +1,16 @@
-var gameWord = require('./word');
-console.log(gameWord);
-// function Display(word) {
-// 	this.word = word;
-// 	this.split = function() {
-// 		console.log(word.split(''));
-// 	};
-// }
+// var gameWord = require('./word');
+// console.log(gameWord);
+var Letter = function(let) {
+	
+	this.charac = let;
+	
+	this.appear = false;
 
-// var gameWord = new Display(gameWord.word);
+	this.letterRender = function() {
+		//if appear is false then show the _
+		//else appear is true then show character
+		return !(this.appear) ? " _ " : this.charac;
+	};
+};
 
-// // var test = gameWord.split();
-
-// // console.log(test);
-
-// gameWord.split();
+module.exports = Letter;

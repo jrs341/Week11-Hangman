@@ -1,16 +1,49 @@
-var gameWord = require('./game');
+var Letter = require('./letter.js');
 
-console.log('1 ' + gameWord.gameWord);
+var Word = function(wrd){
+	this.word = wrd;
+	this.lets = []; //letter objects
+	this.found = false;
 
-function helpword(word) {
-	this.word = word;
-	this.printWord = function(){
-		console.log(this.word);
-	}
+	this.getLets = function() {
+		for(var i = 0; i < this.word.length; i++) {
+			this.lets.push(new Letter(this.word[i]));
+		}
+		console.log(this.lets);
+	};
+	
+	//found the current word
+	this.didWeFindTheWord = function() {
+		//sets this.found in the word object to true or false if all letter objects have a true value in their appear property
+		this.found = this.lets.every(function(curLet) {
+			return curLet.appear;
+		});
+
+		return this.found;
+	};
+
+	this.checkIfLetterFound = function(guessLetter) {
+		var whatToReturn = 0;
+
+		for(var i = 0; i < this.lets.length; i++) {
+			if (this.lets[i].charac == guessLetter){
+				this.lets[i].appear = true;
+				whatToReturn++;
+			}
+		}
+
+		return whatToReturn;
+	};
+
+	this.wordRender = function() {
+		var str = '';
+
+		for(var i=0; i < this.lets.length; i++){
+			str += this.lets[i].letterRender();
+		}
+
+		return str;
+	};
 }
 
-var gameWord = new helpword(gameWord.gameWord);
-
-gameWord.printWord();
-console.log(gameWord);
-module.exports.gameWord;
+module.exports = Word;

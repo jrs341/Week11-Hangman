@@ -1,15 +1,11 @@
-var randomWord = require('random-word-by-length');
+// var randomWord = require('random-word-by-length');
 
-// var word = require("word-definition");
+// // var word = require("word-definition");
 
-var gameWord = randomWord();
+// var gameWord = randomWord();
 
-// var wordDef = word.getDef(gameWord, "en", null, function(definition) {
-    // console.log(definition);
-//     console.log(definition.word);
-// });
+// module.exports.gameWord = randomWord();
 
-// console.log(randomWord());
-// console.log(gameWord.split(''));
-
-module.exports.gameWord = randomWord();
+exports.game = {
+	wordBank : ["heart and soul", "relax", "burning up", "manic monday", "into the groove", "invisible touch", "rebel yell"]
+};

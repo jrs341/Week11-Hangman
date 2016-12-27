@@ -1,113 +1,74 @@
-var word = require('./game');
+var prompt = require('prompt');
+var Word = require('./word.js');
+// var Letter = require('./letter.js');
+var lettersGuessed = [];
 
-console.log(word.gameWord);
+prompt.start();
 
-var guessedLetter = process.argv[2];
+game = {
+	wordBank : ["heart and soul", "relax", "burning up", "manic monday", "into the groove", "invisible touch", "rebel yell"],
+	wordsWon : 0,
+	guessesRemaining : 10, //per word
+	currentWrd : null, //the word object
+	startGame : function (wrd){
+		//make sure the user has 10 guesses
+		this.resetGuessesRemaining();
 
-var guessedLetters = [];
+		//get a random word from the array
+		this.currentWrd = new Word(this.wordBank[Math.floor(Math.random()* this.wordBank.length)]);
+		console.log(this.currentWrd.word);
+		this.currentWrd.getLets(); //populate currentWrd (made from Word constructor function) object with letters
+		console.log(this.currentWrd.wordRender());
+		this.keepPromptingUser();
 
-var wordArray = word.gameWord.split('');
+	}, 
+	resetGuessesRemaining : function(){
+		this.guessRemaining = 10;
+	},
+	keepPromptingUser : function(){
+		var self = this;
 
-var blank = new Array(wordArray.length);
+		prompt.get(['guessLetter'], function(err, result) {
+		    // result is an object like this: { guessLetter: 'f' }
+		    //console.log(result);
+		    lettersGuessed.push(result.guessLetter);
 
-var numGuessRem = wordArray.length + 6;
+		    console.log('  The letter or space you guessed is: ' + result.guessLetter);
 
-var wrongGuess = 0;
+		    //this checks if the letter was found and if it is then it sets that specific letter in the word to be found
+		    var findHowManyOfUserGuess = self.currentWrd.checkIfLetterFound(result.guessLetter);
 
-var continueGame = true;
+		    //if the user guessed incorrectly minus the number of guesses they have left
+		    if (findHowManyOfUserGuess == 0){
+		    	console.log('You guessed wrong!');
+		    	self.guessesRemaining--;
+		    }else{
+		    	console.log('You guessed right!');
 
-// this adds an underline for each letter of the word
+		    	//check if you win only when you are right
+	    		if(self.currentWrd.didWeFindTheWord()){
+			    	console.log('You Won!!!');
+			    	return; //end game
+			    }
+		    }
+		    
+		    console.log('Guesses remaining: ', self.guessesRemaining);
+		    console.log(self.currentWrd.wordRender());
+		    console.log('here are the letters you guessed already: ', lettersGuessed.toString());
 
-// change the order of logic look for blank first
-for (var i = 0; i < wordArray.length; i++) {
-	if (wordArray[i] == ' ') {
-		blank[i] = ' ';
-	} else {
-		blank[i] = ' _ ';
-	}	
-}
-
-console.log(wordArray);
-
-console.log(blank);
-
-console.log(wordArray.toString());
-
-console.log(blank.join());
-
-function arraysEqual(arr1, arr2) {
-// .split("")
-	if (arr1.toString() == arr2.join()) {
-		// wins ++;
-		console.log('You Win');
-		return continueGame = false;
-	} else if (wrongGuess === 6) {
-		console.log('You lost, the word is ' + word.gameWord + ' would you like to play again?');
-		// losses++;
-		return continueGame = false;
-	} 
-}
-
-function include(array, guessedLetter) {
-
-		if (guessedLetters.indexOf(guessedLetter) > -1 && numGuessRem >= 1) {
-			wrongGuess++;
-			console.log('You Guessed That Letter Already');
-		} // this is where the hangman will go
-		// .split(" ")
-		else if (array.indexOf(guessedLetter) === -1 && guessedLetters.indexOf(guessedLetter) === -1 && numGuessRem >= 1 && array.toString() != blank.join()) {
-			wrongGuess++;
-			console.log('Try Again');
-			// document.getElementById('status').innerHTML = 'Try Again';
-			// 	if (wrongGuess === 1) {
-			// 		emoji.src = 'assets/images/flushedFace.png';
-			// 		emojiAppend();
-			// 	}
-			// 	else if (wrongGuess === 2) {
-			// 		emoji.src = 'assets/images/disappointedFace.png';
-			// 		emojiAppend();
-			// 	}
-			// 	else if (wrongGuess === 3) {
-			// 		emoji.src = 'assets/images/angryFace.png';
-			// 		emojiAppend();
-			// 	}
-			// 	else if (wrongGuess === 4) {
-			// 		emoji.src = 'assets/images/triumphFace.png';
-			// 		emojiAppend();
-			// 	}
-			// 	else if (wrongGuess === 5) {
-			// 		emoji.src = 'assets/images/cryingFace.png';
-			// 		emojiAppend();
-			// 	}
-			// 	else if (wrongGuess === 6) {
-			// 		emoji.src = 'assets/images/dizzyFace.png';
-			// 		emojiAppend();
-			// 	}
-		} else {
-			console.log('Good Guess');
-		}
-
-		if (guessedLetter) {
-			guessedLetters.push(guessedLetter);
-		}
-		// .split("")
-		for(var i = 0; i < array.length; i++) {
-			if (array[i] === guessedLetter) { 
-				blank.splice(i, 1, guessedLetter);
-			}
-		}
-}
-
-if (continueGame) {
-
-
-		 if (numGuessRem > 0) {
-
-			numGuessRem --;
-
-			include(wordArray, guessedLetter);
-
-			arraysEqual(wordArray, blank);
-
-		} 
+		    if ((self.guessesRemaining > 0) && (self.currentWrd.found == false)){
+		    	self.keepPromptingUser();
+		    }
+		    else if(self.guessesRemaining == 0){
+		    	console.log('Game over bro it was ', self.currentWrd.word);
+		    	console.log('Get with the program man');
+		    }else{
+		    	console.log(self.currentWrd.wordRender());
+		    }
+		});
 	}
+
+
+};
+
+game.startGame();
