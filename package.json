@@ -1,0 +1,31 @@
+{
+  "name": "hangmanweek11",
+  "version": "1.0.0",
+  "description": "A version of hangman built using javascript constructors and running in node",
+  "main": "main.js",
+  "dependencies": {
+    "define-word": "^1.0.5",
+    "prompt": "^1.0.0",
+    "random-word-by-length": "^0.1.0",
+    "word-definition": "^2.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrs341/hangmanWeek11.git"
+  },
+  "keywords": [
+    "node",
+    "javascript",
+    "OOP"
+  ],
+  "author": "Jason Sinn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jrs341/hangmanWeek11/issues"
+  },
+  "homepage": "https://github.com/jrs341/hangmanWeek11#readme"
+}
