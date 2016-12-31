@@ -2,7 +2,13 @@
   "name": "hangmanweek11",
   "version": "1.0.0",
   "description": "A version of hangman built using javascript constructors and running in node",
+  "engines": {
+    "node": "4.6.0"
+  },
   "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
   "dependencies": {
     "define-word": "^1.0.5",
     "prompt": "^1.0.0",
