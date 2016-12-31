@@ -14,7 +14,7 @@
     "define-word": "^1.0.5",
     "prompt": "^1.0.0",
     "random-word-by-length": "^0.1.0",
-    "word-definition": "^2.1.2"
+    "word-definition": "^2.1.2",
     "express": "4.13.3"
   },
   "devDependencies": {},
