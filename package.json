@@ -15,7 +15,8 @@
     "prompt": "^1.0.0",
     "random-word-by-length": "^0.1.0",
     "word-definition": "^2.1.2",
-    "express": "4.13.3"
+    "express": "4.13.3",
+    "ejs": "2.5.5"
   },
   "devDependencies": {},
   "scripts": {
