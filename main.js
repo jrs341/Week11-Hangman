@@ -11,6 +11,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
   response.render('pages/index');
+  game.startGame();
 });
 
 app.listen(app.get('port'), function() {
@@ -96,5 +97,5 @@ game = {
 
 };
 
-game.startGame();
+// game.startGame();
 
