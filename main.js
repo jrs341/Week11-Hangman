@@ -11,17 +11,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
   response.render('pages/index');
-  (function () {
-    var old = console.log;
-    var logger = document.getElementById('log');
-    console.log = function (message) {
-        if (typeof message == 'object') {
-            logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : message) + '<br />';
-        } else {
-            logger.innerHTML += message + '<br />';
-        }
-    }
-	})();
+  // window.addEventListener('DOMContentLoaded',game.startGame(), false);
   game.startGame();
 });
 
@@ -49,6 +39,8 @@ game = {
 		this.currentWrd.getLets(); 
 		this.currentWrd.wordRender();
 		console.log('Here is your word: ' + this.currentWrd.wordRender());
+		// var n = console.log('Here is your word: ' + this.currentWrd.wordRender());
+		// document.getElementById('log').innerHTML("hi");
 		this.showDef();
 		this.keepPromptingUser();
 
