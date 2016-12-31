@@ -1,0 +1,6 @@
+{
+  "name": "Start on Heroku: Node.js",
+  "description": "hangman using express and node",
+  "repository": "https://github.com/jrs341/hangmanWeek11",
+  "keywords": ["node", "express", "static"],
+}
