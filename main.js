@@ -1,9 +1,3 @@
-var prompt = require('prompt');
-var def = require("word-definition");
-var Word = require('./word.js');
-var gameWord = require('./game.js');
-var lettersGuessed = [];
-
 var express = require('express');
 var app = express();
 
@@ -22,6 +16,12 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
+var prompt = require('prompt');
+var def = require("word-definition");
+var Word = require('./word.js');
+var gameWord = require('./game.js');
+var lettersGuessed = [];
 
 prompt.start();
 
@@ -95,6 +95,6 @@ game = {
 
 
 };
-// game.showDef();
+
 game.startGame();
 
